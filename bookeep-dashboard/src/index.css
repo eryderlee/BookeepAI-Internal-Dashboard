@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* Custom animations */
+@keyframes slide-infinite {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(calc(100vw));
+  }
+}
+
+.animate-slide-infinite {
+  animation: slide-infinite 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
