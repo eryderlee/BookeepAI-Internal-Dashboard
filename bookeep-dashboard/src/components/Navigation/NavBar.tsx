@@ -16,29 +16,29 @@ const NavBar = () => {
             key={item.name}
             to={item.path}
             className={({ isActive }) =>
-              `group relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex flex-col items-center hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 ${
+              `group relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex flex-col items-center hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:focus:ring-blue-400/50 focus:ring-offset-2 dark:focus:ring-offset-slate-900 ${
                 isActive
-                  ? `bg-${item.color}-100 text-${item.color}-900 shadow-md`
-                  : `text-blue-700 hover:bg-${item.color}-50 hover:text-${item.color}-800`
+                  ? `bg-${item.color}-100 dark:bg-${item.color}-900/30 text-${item.color}-900 dark:text-${item.color}-100 shadow-md dark:shadow-lg`
+                  : `text-blue-700 dark:text-blue-300 hover:bg-${item.color}-50 dark:hover:bg-${item.color}-900/20 hover:text-${item.color}-800 dark:hover:text-${item.color}-200`
               }`
             }
           >
             {/* Active indicator line */}
             {({ isActive }) => (
               <>
-                <span className="relative z-10">{item.name}</span>
+                <span className="relative z-10 transition-colors duration-300">{item.name}</span>
                 {item.owner && (
-                  <span className="text-xs opacity-70 mt-0.5 relative z-10">({item.owner})</span>
+                  <span className="text-xs opacity-70 mt-0.5 relative z-10 transition-colors duration-300">({item.owner})</span>
                 )}
                 {/* Animated underline */}
                 <div
-                  className={`absolute bottom-0 left-1/2 h-0.5 bg-${item.color}-500 transition-all duration-300 ${
+                  className={`absolute bottom-0 left-1/2 h-0.5 bg-${item.color}-500 dark:bg-${item.color}-400 transition-all duration-300 ${
                     isActive ? 'w-3/4 -translate-x-1/2' : 'w-0 -translate-x-1/2 group-hover:w-1/2'
                   }`}
                 />
                 {/* Hover background effect */}
                 <div
-                  className={`absolute inset-0 rounded-lg bg-gradient-to-r from-${item.color}-200/50 to-${item.color}-300/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200`}
+                  className={`absolute inset-0 rounded-lg bg-gradient-to-r from-${item.color}-200/50 to-${item.color}-300/50 dark:from-${item.color}-700/30 dark:to-${item.color}-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200`}
                 />
               </>
             )}

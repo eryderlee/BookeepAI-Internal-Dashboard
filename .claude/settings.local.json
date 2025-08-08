@@ -11,7 +11,15 @@
       "mcp__context7__get-library-docs",
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_take_screenshot",
-      "mcp__playwright__browser_click"
+      "mcp__playwright__browser_click",
+      "Bash(npx tsc:*)",
+      "Bash(npm run lint)",
+      "mcp__playwright__playwright_navigate",
+      "Bash(npx playwright install:*)",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_snapshot",
+      "Bash(rm:*)",
+      "Bash(curl:*)"
     ],
     "deny": []
   }

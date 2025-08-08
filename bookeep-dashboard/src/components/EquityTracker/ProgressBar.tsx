@@ -12,8 +12,8 @@ interface ProgressBarProps {
 const ProgressBar = ({ founders }: ProgressBarProps) => {
   return (
     <div className="w-full space-y-4">
-      <div className="flex h-8 bg-gray-200 rounded-lg overflow-hidden shadow-inner">
-        {founders.map((founder, index) => (
+      <div className="flex h-8 bg-gray-200 dark:bg-slate-700 rounded-lg overflow-hidden shadow-inner dark:shadow-slate-900/50 transition-colors duration-300">
+        {founders.map((founder) => (
           <div
             key={founder.name}
             className={`h-full ${founder.color} transition-all duration-500 ease-in-out flex items-center justify-center relative group cursor-pointer hover:brightness-110 hover:shadow-lg`}
@@ -34,13 +34,13 @@ const ProgressBar = ({ founders }: ProgressBarProps) => {
         {founders.map((founder) => (
           <div 
             key={founder.name} 
-            className="group flex items-center space-x-3 p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-sm cursor-pointer hover:-translate-y-0.5"
+            className="group flex items-center space-x-3 p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 dark:hover:bg-slate-700/50 hover:shadow-sm dark:hover:shadow-slate-900/50 cursor-pointer hover:-translate-y-0.5"
           >
             <div className={`w-4 h-4 rounded ${founder.color} transition-all duration-200 group-hover:scale-125 group-hover:shadow-md`}></div>
             <div>
-              <p className="font-medium text-blue-900 group-hover:text-blue-700 transition-colors">{founder.name}</p>
-              <p className="text-xs text-gray-500 group-hover:text-gray-600 transition-colors">{founder.department}</p>
-              <p className="text-sm text-gray-600 group-hover:text-gray-700 font-semibold transition-colors">{founder.percentage.toFixed(1)}%</p>
+              <p className="font-medium text-blue-900 dark:text-blue-100 group-hover:text-blue-700 dark:group-hover:text-blue-200 transition-colors">{founder.name}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">{founder.department}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 group-hover:text-gray-700 dark:group-hover:text-gray-200 font-semibold transition-colors">{founder.percentage.toFixed(1)}%</p>
             </div>
           </div>
         ))}

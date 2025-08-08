@@ -45,7 +45,7 @@ const PieChart = ({ founders }: PieChartProps) => {
     <div className="flex flex-col items-center space-y-6">
       <div className="relative">
         <svg width="200" height="200" viewBox="0 0 200 200" className="transform -rotate-90">
-          {founders.map((founder, index) => {
+          {founders.map((founder) => {
             const startAngle = cumulativePercentage * 3.6; // Convert percentage to degrees
             const pathData = createPathData(founder.percentage, startAngle);
             cumulativePercentage += founder.percentage;
@@ -79,7 +79,7 @@ const PieChart = ({ founders }: PieChartProps) => {
                 fill={fillColor}
                 className="transition-all duration-300 hover:opacity-90 hover:stroke-4 cursor-pointer drop-shadow-sm hover:drop-shadow-md"
                 strokeWidth="2"
-                stroke="white"
+                stroke="white dark:stroke-slate-800"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.filter = 'brightness(1.1) drop-shadow(0 4px 8px rgba(0,0,0,0.15))';
                 }}
@@ -93,10 +93,10 @@ const PieChart = ({ founders }: PieChartProps) => {
         
         {/* Center circle with total equity text */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center bg-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg border border-blue-100 hover:shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer">
+          <div className="text-center bg-white dark:bg-slate-800 rounded-full w-16 h-16 flex items-center justify-center shadow-lg dark:shadow-slate-900/50 border border-blue-100 dark:border-slate-600 hover:shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer">
             <div>
-              <div className="text-xs text-gray-500 font-medium">Total</div>
-              <div className="text-sm font-bold text-blue-900">100%</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400 font-medium transition-colors duration-300">Total</div>
+              <div className="text-sm font-bold text-blue-900 dark:text-blue-100 transition-colors duration-300">100%</div>
             </div>
           </div>
         </div>
@@ -107,13 +107,13 @@ const PieChart = ({ founders }: PieChartProps) => {
         {founders.map((founder) => (
           <div 
             key={founder.name} 
-            className="group flex items-center space-x-2 text-sm p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 hover:shadow-md cursor-pointer hover:-translate-y-1"
+            className="group flex items-center space-x-2 text-sm p-3 rounded-lg transition-all duration-200 hover:bg-blue-50 dark:hover:bg-slate-700/50 hover:shadow-md dark:hover:shadow-slate-900/50 cursor-pointer hover:-translate-y-1"
           >
             <div className={`w-3 h-3 rounded-full ${founder.color} transition-transform duration-200 group-hover:scale-125 shadow-sm`}></div>
             <div className="text-center">
-              <p className="font-medium text-blue-900 text-xs group-hover:text-blue-700 transition-colors">{founder.name}</p>
-              <p className="text-xs text-gray-500 group-hover:text-gray-600 transition-colors">{founder.department}</p>
-              <p className="font-semibold text-blue-800 group-hover:text-blue-600 transition-colors">{founder.percentage.toFixed(1)}%</p>
+              <p className="font-medium text-blue-900 dark:text-blue-100 text-xs group-hover:text-blue-700 dark:group-hover:text-blue-200 transition-colors">{founder.name}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">{founder.department}</p>
+              <p className="font-semibold text-blue-800 dark:text-blue-200 group-hover:text-blue-600 dark:group-hover:text-blue-100 transition-colors">{founder.percentage.toFixed(1)}%</p>
             </div>
           </div>
         ))}
