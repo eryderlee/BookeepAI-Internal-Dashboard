@@ -1,5 +1,18 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { 
+  FolderKanban, 
+  BarChart3, 
+  Target, 
+  CheckSquare, 
+  Wrench, 
+  FolderOpen, 
+  TrendingUp, 
+  MessageSquare, 
+  FlaskConical, 
+  Megaphone 
+} from 'lucide-react';
+import { Icon } from '../UI';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -8,61 +21,61 @@ const Sidebar = () => {
     { 
       name: 'Projects', 
       path: '/projects', 
-      icon: '🧩',
+      icon: FolderKanban,
       description: 'Active automation projects' 
     },
     { 
       name: 'KPIs', 
       path: '/kpis', 
-      icon: '📊',
+      icon: BarChart3,
       description: 'Key performance indicators' 
     },
     { 
       name: 'Client Pulse', 
       path: '/client-pulse', 
-      icon: '🎯',
+      icon: Target,
       description: 'Client satisfaction metrics' 
     },
     { 
       name: 'Tasks', 
       path: '/tasks', 
-      icon: '📋',
+      icon: CheckSquare,
       description: 'Team task management' 
     },
     { 
       name: 'Build Tracker', 
       path: '/build-tracker', 
-      icon: '🛠️',
+      icon: Wrench,
       description: 'Development builds & deployments' 
     },
     { 
       name: 'Assets', 
       path: '/assets', 
-      icon: '📁',
+      icon: FolderOpen,
       description: 'Templates & resources' 
     },
     { 
       name: 'Sales', 
       path: '/sales', 
-      icon: '📡',
+      icon: TrendingUp,
       description: 'Sales pipeline & metrics' 
     },
     { 
       name: 'Notes', 
       path: '/notes', 
-      icon: '💬',
+      icon: MessageSquare,
       description: 'Team communication' 
     },
     { 
       name: 'Experiments', 
       path: '/experiments', 
-      icon: '🧪',
+      icon: FlaskConical,
       description: 'A/B tests & experiments' 
     },
     { 
       name: 'Announcements', 
       path: '/announcements', 
-      icon: '📣',
+      icon: Megaphone,
       description: 'Company updates' 
     },
   ];
@@ -111,9 +124,9 @@ const Sidebar = () => {
           >
             {({ isActive }) => (
               <>
-                <span className={`text-lg transition-transform duration-200 group-hover:scale-110 ${isCollapsed ? '' : 'mr-3'}`}>
-                  {item.icon}
-                </span>
+                <div className={`transition-transform duration-200 group-hover:scale-110 ${isCollapsed ? '' : 'mr-3'}`}>
+                  <Icon icon={item.icon} size="md" />
+                </div>
                 {!isCollapsed && (
                   <div className="flex-1 min-w-0">
                     <div className="font-medium">{item.name}</div>

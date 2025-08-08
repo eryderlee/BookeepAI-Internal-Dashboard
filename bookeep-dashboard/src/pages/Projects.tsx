@@ -1,4 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle, Badge, Button } from '../components/UI';
+import { Card, CardContent, CardHeader, CardTitle, Badge, Button, Icon } from '../components/UI';
+import { Plus, ClipboardList, CheckCircle, Zap, DollarSign } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -95,7 +96,7 @@ const Projects = () => {
           </p>
         </div>
         <Button variant="primary">
-          <span className="mr-2">➕</span>
+          <Icon icon={Plus} size="sm" className="mr-2" />
           New Project
         </Button>
       </div>
@@ -106,7 +107,7 @@ const Projects = () => {
           <CardContent className="p-6">
             <div className="flex items-center">
               <div className="p-2 bg-blue-100 dark:bg-blue-900/20 rounded-lg">
-                <span className="text-2xl">📋</span>
+                <Icon icon={ClipboardList} size="lg" className="text-blue-600 dark:text-blue-400" />
               </div>
               <div className="ml-4">
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">6</p>
@@ -120,7 +121,7 @@ const Projects = () => {
           <CardContent className="p-6">
             <div className="flex items-center">
               <div className="p-2 bg-green-100 dark:bg-green-900/20 rounded-lg">
-                <span className="text-2xl">✅</span>
+                <Icon icon={CheckCircle} size="lg" className="text-green-600 dark:text-green-400" />
               </div>
               <div className="ml-4">
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">1</p>
@@ -134,7 +135,7 @@ const Projects = () => {
           <CardContent className="p-6">
             <div className="flex items-center">
               <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg">
-                <span className="text-2xl">⚡</span>
+                <Icon icon={Zap} size="lg" className="text-orange-600 dark:text-orange-400" />
               </div>
               <div className="ml-4">
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">2</p>
@@ -148,7 +149,7 @@ const Projects = () => {
           <CardContent className="p-6">
             <div className="flex items-center">
               <div className="p-2 bg-purple-100 dark:bg-purple-900/20 rounded-lg">
-                <span className="text-2xl">💰</span>
+                <Icon icon={DollarSign} size="lg" className="text-purple-600 dark:text-purple-400" />
               </div>
               <div className="ml-4">
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">$249K</p>

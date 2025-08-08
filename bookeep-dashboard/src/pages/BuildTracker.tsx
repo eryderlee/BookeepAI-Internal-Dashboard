@@ -1,4 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle, Badge, Button } from '../components/UI';
+import { Card, CardContent, CardHeader, CardTitle, Badge, Button, Icon } from '../components/UI';
+import { RotateCcw, Settings } from 'lucide-react';
 
 const BuildTracker = () => {
   const builds = [
@@ -112,11 +113,11 @@ const BuildTracker = () => {
         </div>
         <div className="flex space-x-2">
           <Button variant="ghost" size="sm">
-            <span className="mr-2">🔄</span>
+            <Icon icon={RotateCcw} size="sm" className="mr-2" />
             Refresh
           </Button>
           <Button variant="outline" size="sm">
-            <span className="mr-2">⚙️</span>
+            <Icon icon={Settings} size="sm" className="mr-2" />
             Settings
           </Button>
         </div>
@@ -276,7 +277,7 @@ const BuildTracker = () => {
                   <div className="flex-1">
                     <p className="text-sm font-medium text-gray-900 dark:text-white">{alert.message}</p>
                     <div className="flex items-center space-x-2 mt-1">
-                      <Badge variant={alert.severity === 'high' ? 'destructive' : alert.severity === 'medium' ? 'warning' : 'info'} className="text-xs">
+                      <Badge variant={alert.severity === 'high' ? 'error' : alert.severity === 'medium' ? 'warning' : 'info'} className="text-xs">
                         {alert.severity}
                       </Badge>
                       <span className="text-xs text-gray-500">{alert.time}</span>

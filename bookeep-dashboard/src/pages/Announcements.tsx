@@ -1,4 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle, Badge } from '../components/UI';
+import { Card, CardContent, CardHeader, CardTitle, Badge, Icon } from '../components/UI';
+import { Trophy } from 'lucide-react';
 
 const Announcements = () => {
   return (
@@ -16,7 +17,10 @@ const Announcements = () => {
         <Card variant="ghost">
           <CardHeader>
             <div className="flex items-center justify-between">
-              <CardTitle className="text-primary-600">🎉 Q4 Goals Achieved!</CardTitle>
+              <CardTitle className="text-primary-600 flex items-center">
+                <Icon icon={Trophy} size="md" className="mr-2 text-primary-600" />
+                Q4 Goals Achieved!
+              </CardTitle>
               <Badge variant="success">New</Badge>
             </div>
           </CardHeader>

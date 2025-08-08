@@ -1,23 +1,38 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { 
+  FolderKanban, 
+  BarChart3, 
+  Target, 
+  CheckSquare, 
+  Wrench, 
+  FolderOpen, 
+  TrendingUp, 
+  MessageSquare, 
+  FlaskConical, 
+  Megaphone,
+  Search,
+  X,
+  Bell
+} from 'lucide-react';
 import ThemeToggle from '../UI/ThemeToggle';
-import { Button } from '../UI/Button';
+import { Button, Icon } from '../UI';
 
 const TopBar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigationItems = [
-    { name: 'Projects', path: '/projects', icon: '🧩' },
-    { name: 'KPIs', path: '/kpis', icon: '📊' },
-    { name: 'Client Pulse', path: '/client-pulse', icon: '🎯' },
-    { name: 'Tasks', path: '/tasks', icon: '📋' },
-    { name: 'Build Tracker', path: '/build-tracker', icon: '🛠️' },
-    { name: 'Assets', path: '/assets', icon: '📁' },
-    { name: 'Sales', path: '/sales', icon: '📡' },
-    { name: 'Notes', path: '/notes', icon: '💬' },
-    { name: 'Experiments', path: '/experiments', icon: '🧪' },
-    { name: 'Announcements', path: '/announcements', icon: '📣' },
+    { name: 'Projects', path: '/projects', icon: FolderKanban },
+    { name: 'KPIs', path: '/kpis', icon: BarChart3 },
+    { name: 'Client Pulse', path: '/client-pulse', icon: Target },
+    { name: 'Tasks', path: '/tasks', icon: CheckSquare },
+    { name: 'Build Tracker', path: '/build-tracker', icon: Wrench },
+    { name: 'Assets', path: '/assets', icon: FolderOpen },
+    { name: 'Sales', path: '/sales', icon: TrendingUp },
+    { name: 'Notes', path: '/notes', icon: MessageSquare },
+    { name: 'Experiments', path: '/experiments', icon: FlaskConical },
+    { name: 'Announcements', path: '/announcements', icon: Megaphone },
   ];
 
   return (
@@ -47,7 +62,7 @@ const TopBar = () => {
         <div className="flex-1 max-w-xl hidden sm:block lg:block">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <span className="text-gray-400 text-sm">🔍</span>
+            <Icon icon={Search} size="sm" className="text-gray-400" />
           </div>
           <input
             type="text"
@@ -62,7 +77,7 @@ const TopBar = () => {
                 onClick={() => setSearchQuery('')}
                 className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
               >
-                <span className="text-sm">✕</span>
+                <Icon icon={X} size="xs" />
               </button>
             </div>
           )}
@@ -82,7 +97,7 @@ const TopBar = () => {
 
           {/* Notifications */}
           <Button variant="ghost" size="sm" className="relative p-2">
-            <span className="text-lg">🔔</span>
+            <Icon icon={Bell} size="md" />
             <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
           </Button>
 
@@ -135,7 +150,7 @@ const TopBar = () => {
                     }`
                   }
                 >
-                  <span className="text-lg mr-3">{item.icon}</span>
+                  <Icon icon={item.icon} size="md" className="mr-3" />
                   <span>{item.name}</span>
                 </NavLink>
               ))}
