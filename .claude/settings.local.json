@@ -19,7 +19,10 @@
       "mcp__playwright__browser_evaluate",
       "mcp__playwright__browser_snapshot",
       "Bash(rm:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(pkill:*)",
+      "Bash(true)",
+      "mcp__playwright__browser_close"
     ],
     "deny": []
   }
