@@ -10,7 +10,8 @@ import {
   TrendingUp, 
   MessageSquare, 
   FlaskConical, 
-  Megaphone 
+  Megaphone,
+  PieChart 
 } from 'lucide-react';
 import { Icon } from '../UI';
 
@@ -18,6 +19,12 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   
   const navigationItems = [
+    { 
+      name: 'Equity Tracker', 
+      path: '/equity', 
+      icon: PieChart,
+      description: 'Founder equity distribution' 
+    },
     { 
       name: 'Projects', 
       path: '/projects', 

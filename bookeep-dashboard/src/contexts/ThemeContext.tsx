@@ -55,12 +55,13 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   useEffect(() => {
     console.log(`Theme effect running: ${theme}`);
     
-    // Update DOM class
+    // Update DOM class immediately
+    const root = document.documentElement;
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
       console.log('Added dark class to document element');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
       console.log('Removed dark class from document element');
     }
     
@@ -71,6 +72,40 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
       console.warn('Failed to save theme to localStorage:', error);
     }
   }, [theme]);
+
+  // Listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+      // Only update if user hasn't set a preference
+      try {
+        const savedTheme = localStorage.getItem('bookeepai-theme');
+        if (!savedTheme) {
+          setTheme(e.matches ? 'dark' : 'light');
+          console.log(`System theme changed to: ${e.matches ? 'dark' : 'light'}`);
+        }
+      } catch (error) {
+        console.warn('Failed to handle system theme change:', error);
+      }
+    };
+
+    // Add listener for system theme changes
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleSystemThemeChange);
+    } else {
+      // Fallback for older browsers
+      mediaQuery.addListener(handleSystemThemeChange);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleSystemThemeChange);
+      } else {
+        mediaQuery.removeListener(handleSystemThemeChange);
+      }
+    };
+  }, []);
 
   const value = {
     theme,

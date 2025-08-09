@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ProgressBar from '../components/EquityTracker/ProgressBar';
 import PieChart from '../components/EquityTracker/PieChart';
-import { n8nApi, type FounderEquityData } from '../services/n8nApi';
+import { supabaseApi, type FounderEquityData } from '../services/supabaseApi';
 
 const EquityTracker = () => {
   const [equityData, setEquityData] = useState<FounderEquityData[]>([]);
@@ -26,15 +26,28 @@ const EquityTracker = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Real-time subscription for database changes
+  useEffect(() => {
+    const subscription = supabaseApi.subscribeToChanges((payload) => {
+      console.log('Real-time update received:', payload);
+      // Refresh data when changes occur
+      fetchEquityData();
+    });
+
+    return () => {
+      supabaseApi.unsubscribe(subscription);
+    };
+  }, []);
+
   const fetchEquityData = async () => {
     try {
       setLoading(true);
-      const response = await n8nApi.getEquityData();
+      const response = await supabaseApi.getEquityData();
       setEquityData(response.founders);
       setLastUpdated(response.lastSync);
       setError('');
     } catch (err) {
-      setError('Failed to fetch equity data');
+      setError('Failed to fetch equity data from database');
       console.error('Error fetching equity data:', err);
     } finally {
       setLoading(false);
@@ -148,9 +161,9 @@ const EquityTracker = () => {
                 </svg>
               </div>
               <div className="flex-1">
-                <h3 className="text-sm font-medium text-red-800 dark:text-red-200 transition-colors duration-300">Connection Error</h3>
+                <h3 className="text-sm font-medium text-red-800 dark:text-red-200 transition-colors duration-300">Database Connection Error</h3>
                 <p className="text-sm text-red-600 dark:text-red-300 mt-1 transition-colors duration-300">{error}</p>
-                <p className="text-xs text-red-500 dark:text-red-400 mt-1 transition-colors duration-300">Showing sample data for demonstration</p>
+                <p className="text-xs text-red-500 dark:text-red-400 mt-1 transition-colors duration-300">Please check your Supabase configuration. Showing sample data for now.</p>
               </div>
             </div>
           </div>

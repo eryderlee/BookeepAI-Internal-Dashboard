@@ -13,7 +13,8 @@ import {
   Megaphone,
   Search,
   X,
-  Bell
+  Bell,
+  PieChart
 } from 'lucide-react';
 import ThemeToggle from '../UI/ThemeToggle';
 import { Button, Icon } from '../UI';
@@ -23,6 +24,7 @@ const TopBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigationItems = [
+    { name: 'Equity Tracker', path: '/equity', icon: PieChart },
     { name: 'Projects', path: '/projects', icon: FolderKanban },
     { name: 'KPIs', path: '/kpis', icon: BarChart3 },
     { name: 'Client Pulse', path: '/client-pulse', icon: Target },
